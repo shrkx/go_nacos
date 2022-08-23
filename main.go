@@ -24,7 +24,7 @@ func main() {
 			Group:  "DEFAULT_GROUP",
 			ServerConfigs: []nacos.NacosServerConfig{
 				nacos.NacosServerConfig{
-					IpAddr: "1.14.60.160",
+					IpAddr: "127.0.0.1",
 					Port:   8848,
 				},
 			},
@@ -35,7 +35,6 @@ func main() {
 	}
 	factory := nacos.NacosFactory(bootstrapConfig)
 	var factory_yaml FactoryYaml
-	//factory.ServiceRegistration("test", "81.69.174.251", 8080)
 	instance := factory.CreateConfigClient(func(data string) {
 		body := bytes.TrimPrefix([]byte(data), []byte("\xef\xbb\xbf"))
 		err := yaml.Unmarshal(body, &factory_yaml)
